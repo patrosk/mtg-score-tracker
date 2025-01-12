@@ -1,17 +1,6 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <title>Laravel</title>
-</head>
-
-<body>
+<x-layout>
     <div>
-        <h1 class="text-6xl font-bold">Hej</h1>
+        <h1 class="text-6xl font-bold">Start</h1>
+        <h2>High score</h2>
     </div>
-</body>
-
-</html>
+</x-layout>
