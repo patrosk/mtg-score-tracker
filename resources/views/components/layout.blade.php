@@ -26,7 +26,8 @@
                 <ul class="dropdown-content">
                     <li><a href="/">Home</a></li>
                     <li><a href="/scoreboard">Scoreboard</a></li>
-                    <li><a href="/new-game">New game</a></li>
+                    <li><a href="/tournaments">Tournaments</a></li>
+                    <li><a href="/games">Games</a></li>
                     <li><a href="/players">Players</a></li>
                 </ul>
             </div>
@@ -36,7 +37,8 @@
                 <ul>
                     <li><a href="/">Home</a></li>
                     <li><a href="/scoreboard">Scoreboard</a></li>
-                    <li><a href="/new-game">New game</a></li>
+                    <li><a href="/tournaments">Tournaments</a></li>
+                    <li><a href="/games">Games</a></li>
                     <li><a href="/players">Players</a></li>
                 </ul>
             </div>
