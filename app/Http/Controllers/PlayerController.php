@@ -19,10 +19,10 @@ class PlayerController extends Controller
         if ($request->hasFile('image')) {
             $imagePath = $request->file('image')->store('player_images', 'public');
             // Save player data to the database (example)
-            Player::create(['name' => $request->name, 'image' => $imagePath]);
+            $player = Player::create(['name' => $request->name, 'image' => $imagePath]);
         }
 
-        // Redirect back with a success message
-        return redirect()->back()->with('success', 'Player added successfully!');
+        // Redirect to the new player's page with a success message
+        return redirect()->route('players.show', ['player' => $player->id])->with('success', 'Player added successfully!');
     }
 }

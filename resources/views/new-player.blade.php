@@ -1,11 +1,6 @@
 <x-layout>
     <div>
         <h1 class="text-6xl font-bold">Add a new player</h1>
-        @if (session('success'))
-            <div class="alert alert-success">
-                {{ session('success') }}
-            </div>
-        @endif
         <form action="/add-new-player" method="POST" enctype="multipart/form-data">
             @csrf
             <label for="name">Name:</label><br>

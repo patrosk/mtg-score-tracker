@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Game;
+use App\Models\Tournament;
 use Illuminate\Http\Request;
 
 class GameController extends Controller
@@ -13,17 +14,16 @@ class GameController extends Controller
         $request->validate([
             'name' => 'required|string|max:255',
             'tournament_id' => 'required|exists:tournaments,id',
-            'players' => 'required|array',
-            'players.*' => 'exists:players,id',
         ]);
 
-        // Save game data to the database (example)
         $game = Game::create(['name' => $request->name, 'tournament_id' => $request->tournament_id]);
 
         // Attach players to the game
-        $game->players()->attach($request->players);
+        $tournament = Tournament::find($request->tournament);
+        $players = $tournament->players;
+        $game->players()->attach($players);
 
         // Redirect back with a success message
-        return redirect()->route('games/{game}', ['game' => $game->id])->with('success', 'Game added successfully!');
+        return redirect()->route('games.show', ['game' => $game->id])->with('success', 'Game added successfully!');
     }
 }

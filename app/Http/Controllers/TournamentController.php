@@ -23,6 +23,6 @@ class TournamentController extends Controller
         $tournament->players()->attach($request->players);
 
         // Redirect back with a success message
-        return redirect()->route('tournaments/{tournament}', ['tournament' => $tournament->id])->with('success', 'Tournament added successfully!');
+        return redirect()->route('tournaments.show', ['tournament' => $tournament->id])->with('success', 'Tournament added successfully!');
     }
 }

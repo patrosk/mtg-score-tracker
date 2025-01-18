@@ -21,7 +21,7 @@ Route::get('/players', function () {
 
 Route::get('/players/{player}', function (App\Models\Player $player) {
     return view('player', ['player' => $player]);
-});
+})->name('players.show');
 
 Route::get('/new-player', function () {
     return view('new-player');
@@ -33,8 +33,12 @@ Route::get('/games', function () {
 });
 
 Route::get('/new-game', function () {
-    return view('new-game');
+    return view('new-game', ['players' => App\Models\Player::all(), 'tournaments' => App\Models\Tournament::all()]);
 });
+
+Route::get('/games/{game}', function (App\Models\Game $game) {
+    return view('game', ['game' => $game]);
+})->name('games.show');
 
 // Tournament routes
 Route::get('/tournaments', function () {
@@ -43,7 +47,7 @@ Route::get('/tournaments', function () {
 
 Route::get('/tournaments/{tournament}', function (App\Models\Tournament $tournament) {
     return view('tournament', ['tournament' => $tournament]);
-});
+})->name('tournaments.show');
 
 Route::get('/new-tournament', function () {
     return view('new-tournament', ['players' => App\Models\Player::all()]);

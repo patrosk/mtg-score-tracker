@@ -12,4 +12,9 @@ class Tournament extends Model
     {
         return $this->hasMany(Game::class);
     }
+
+    public function players()
+    {
+        return $this->belongsToMany(Player::class, 'player_tournament');
+    }
 }
