@@ -15,14 +15,12 @@ return new class extends Migration
             $table->id();
             $table->foreignId('tournament_id')->constrained()->onDelete('cascade');
             $table->foreignId('player_id')->constrained()->onDelete('cascade');
-            $table->timestamps();
         });
 
         Schema::create('game_player', function (Blueprint $table) {
             $table->id();
             $table->foreignId('game_id')->constrained()->onDelete('cascade');
             $table->foreignId('player_id')->constrained()->onDelete('cascade');
-            $table->timestamps();
         });
     }
 

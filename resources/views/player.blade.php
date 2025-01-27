@@ -6,5 +6,6 @@
         @endif
         <h1>{{ $player->name }}</h1>
         <img src="{{ asset('storage/' . $player->image) }}" alt="{{ $player->name }}" width="100">
+        <button><a href="/players/{{ $player->id }}/edit">Edit player</a></button>
     </div>
 </x-layout>

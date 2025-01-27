@@ -27,6 +27,10 @@ Route::get('/new-player', function () {
     return view('new-player');
 });
 
+Route::get('/players/{player}/edit', function (App\Models\Player $player) {
+    return view('edit-player', ['player' => $player]);
+})->name('players.edit');
+
 //Game routes
 Route::get('/games', function () {
     return view('games', ['games' => App\Models\Game::all()]);
@@ -55,5 +59,6 @@ Route::get('/new-tournament', function () {
 
 // Post routes
 Route::post('/add-new-player', [PlayerController::class, 'addNewPlayer']);
+Route::post('/edit-player', [PlayerController::class, 'editPlayer']);
 Route::post('/add-new-game', [GameController::class, 'addNewGame']);
 Route::post('/add-new-tournament', [TournamentController::class, 'addNewTournament']);

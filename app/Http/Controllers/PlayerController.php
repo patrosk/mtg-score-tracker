@@ -25,4 +25,24 @@ class PlayerController extends Controller
         // Redirect to the new player's page with a success message
         return redirect()->route('players.show', ['player' => $player->id])->with('success', 'Player added successfully!');
     }
+
+    public function editPlayer(Request $request, Player $player)
+    {
+        // Validate the request
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+        ]);
+
+        // Handle the file upload and update player data
+        if ($request->hasFile('image')) {
+            $imagePath = $request->file('image')->store('player_images', 'public');
+            $player->update(['name' => $request->name, 'image' => $imagePath]);
+        } else {
+            $player->update(['name' => $request->name]);
+        }
+
+        // Redirect back to the player's page with a success message
+        return redirect()->route('players.show', ['player' => $player->id])->with('success', 'Player updated successfully!');
+    }
 }
